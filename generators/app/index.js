@@ -6,11 +6,34 @@ module.exports = generators.Base.extend({
     generators.Base.apply(this, arguments);
   },
 
+  prompting() {
+    return this.prompt([
+    ]).then((answers) => {
+      this.answers = answers;
+    });
+  },
+
   writing() {
+    // Create package.json
+    this.fs.writeJSON(
+      this.destinationPath('package.json'),
+      {
+        name: this.answers.directory,
+        version: '0.1.0',
+        author: this.user.git.name(),
+      }
+    );
+
     // Write eslintrc
     this.fs.copyTpl(
       this.templatePath('eslintrc'),
       this.destinationPath('.eslintrc')
+    );
+
+    // Write gitignore
+    this.fs.copyTpl(
+      this.templatePath('gitignore'),
+      this.destinationPath('.gitignore')
     );
   },
 
