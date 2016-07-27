@@ -4,7 +4,8 @@
   "description": "A generator for my codefellows 401 labs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint generators/**/*.js"
   },
   "keywords": [
     "yeoman-generator"
@@ -13,5 +14,10 @@
   "license": "MIT",
   "dependencies": {
     "yeoman-generator": "^0.24.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb-base": "^5.0.0",
+    "eslint-plugin-import": "^1.12.0"
   }
 }
